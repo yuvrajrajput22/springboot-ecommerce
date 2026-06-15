@@ -1,40 +1,45 @@
+
 package com.Project1.MyProject1.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 // 1
-//koii annotation nhi ye sirf ek java class hei
-//jaise real life me product ka form hota hei - name ,price catagory
+@Entity
 
+@Table(name = "products")
 public class Product {
-
-    // ye filds hei - product properties
+    @Id
     private int id;
+
+    @Column(name ="name" ,nullable = false)
     private String name;
+
+    @Column(name="price")
     private double price;
+
+    @Column(name="catagory")
     private String category;
 
-    // controctor
-    //nya object bnate wkt ye chlega
-    //jese form fill kerte hei- ssab feilds ek sathe dete hei
-    public Product(int id,String name, double price, String category)
-    {
-        this.id= id; // jo id aayi hei sue is obj ki id set kro
-        this.name=name; // jo nam aaya use set kro
-        this.price=price; // price set kro
-        this.category=category; // catagory set kro
+    public Product() {
+    }
+    public Product(int id, String name, double price, String category) {
+        this.name=name;
+        this.price=price;
+        this.category=category;
     }
 
-    // Getters- data bhar nikalne ke lie
-    // spring json bnate wkt imhe call krta hei automatically
-
-    public int getId() { return id; }
-    public String getName() { return name; }
-    public double getPrice() { return price; }
-    public String getCategory() { return category; }
-
-    // Setters - data set/update krne ke lie
-    public void setId(int id) { this.id = id; }
-    public void setName(String name) { this.name = name; }
-    public void setPrice(double price) { this.price = price; }
-    public void setCategory(String category) { this.category = category; }
+    // getter and setter
+    public int getId() {int id=this.id;return id;}
+    public void setId(int id) {this.id=id;}
+    public String getName() {return name;}
+    public void setName(String name) {this.name=name;}
+    public double getPrice() {return price;}
+    public void setPrice(double price) {this.price=price;}
+    public String getCategory() {return category;}
+    public void setCategory(String category) {this.category=category;}
 
 }
+
