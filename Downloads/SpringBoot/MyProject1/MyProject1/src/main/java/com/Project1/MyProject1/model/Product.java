@@ -1,45 +1,44 @@
-
 package com.Project1.MyProject1.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
 
-// 1
 @Entity
-
 @Table(name = "products")
 public class Product {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name ="name" ,nullable = false)
+    @NotBlank(message = "Product name cannot be empty")
     private String name;
 
-    @Column(name="price")
+    @Positive(message = "Price must be positive")
     private double price;
 
-    @Column(name="catagory")
     private String category;
 
-    public Product() {
-    }
-    public Product(int id, String name, double price, String category) {
-        this.name=name;
-        this.price=price;
-        this.category=category;
+    // No-arg constructor — JPA ke liye zaroori!
+    public Product() {}
+
+    // Constructor
+    public Product(String name, double price, String category) {
+        this.name = name;
+        this.price = price;
+        this.category = category;
     }
 
-    // getter and setter
-    public int getId() {int id=this.id;return id;}
-    public void setId(int id) {this.id=id;}
-    public String getName() {return name;}
-    public void setName(String name) {this.name=name;}
-    public double getPrice() {return price;}
-    public void setPrice(double price) {this.price=price;}
-    public String getCategory() {return category;}
-    public void setCategory(String category) {this.category=category;}
+    // Getters
+    public int getId() { return id; }
+    public String getName() { return name; }
+    public double getPrice() { return price; }
+    public String getCategory() { return category; }
 
+    // Setters
+    public void setId(int id) { this.id = id; }
+    public void setName(String name) { this.name = name; }
+    public void setPrice(double price) { this.price = price; }
+    public void setCategory(String category) { this.category = category; }
 }
-
