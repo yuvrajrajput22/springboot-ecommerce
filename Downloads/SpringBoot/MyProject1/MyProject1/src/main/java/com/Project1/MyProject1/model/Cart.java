@@ -1,27 +1,44 @@
 package com.Project1.MyProject1.model;
 
 import jakarta.persistence.*;
-import org.springframework.data.repository.cdi.Eager;
 
 @Entity
-@Table(name="Cart")
+@Table(name = "cart")
 public class Cart {
-   @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-   //har Cart item ka unique number
-    // jaise recipt number
 
     @ManyToOne
-    @JoinColumn(name ="user_id")
-   private User user;
-    //cheak krega kon login  hei  user
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @ManyToOne
-    @JoinColumn(name="product_id")
-        private Product product;
+    @JoinColumn(name = "product_id")
+    private Product product;
 
     private int quantity;
 
+    // No-arg constructor — JPA ke liye zaroori!
+    public Cart() {}
 
+    // Constructor
+    public Cart(User user, Product product, int quantity) {
+        this.user = user;
+        this.product = product;
+        this.quantity = quantity;
+    }
+
+    // Getters
+    public int getId() { return id; }
+    public User getUser() { return user; }
+    public Product getProduct() { return product; }
+    public int getQuantity() { return quantity; }
+
+    // Setters
+    public void setId(int id) { this.id = id; }
+    public void setUser(User user) { this.user = user; }
+    public void setProduct(Product product) { this.product = product; }
+    public void setQuantity(int quantity) { this.quantity = quantity; }
 }
