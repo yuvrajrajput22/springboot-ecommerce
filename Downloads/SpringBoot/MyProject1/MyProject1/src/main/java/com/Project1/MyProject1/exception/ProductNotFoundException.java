@@ -1,10 +1,14 @@
 package com.Project1.MyProject1.exception;
 
-// RuntimeException extend kiya — ye ek special Exception hai
-public class ProductNotFoundException extends RuntimeException {
-
-    // Constructor — jab exception throw karenge, message dena hoga
+ // Runtime exc ko extend kra hei
+// mtlb - hmne java ka buil exception se apna  khud ka exce bnaya hei
+public class ProductNotFoundException extends RuntimeException
+{
+     // constructor - jb bhi ye exc throw krega
+    // ek msssage dena hoga jese "Product nhi mila"
     public ProductNotFoundException(String message) {
-        super(message); // parent class ko message bhej diya
+        super(message);
+        // super () ka mtllb hei parent class (RunTimeExc) ko ye msg bhej do
+        // taki wo use store ker ske
     }
 }
